@@ -28,7 +28,7 @@ public class AnimeInitData implements CommandLineRunner {
                     "https://hianime.to/angel-beats-321?ref=search",
                     "Action, Comedy, Drama, School, Supernatural",
                     "Good",
-                    "YES",
+                        "YES",
                     2,
                      LocalDate.of(2018, 10, 20),
                      LocalDate.of(2024, 3, 7),

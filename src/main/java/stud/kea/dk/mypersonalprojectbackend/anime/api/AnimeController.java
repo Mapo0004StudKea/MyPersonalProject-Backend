@@ -1,5 +1,6 @@
 package stud.kea.dk.mypersonalprojectbackend.anime.api;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stud.kea.dk.mypersonalprojectbackend.anime.model.Anime;
@@ -31,5 +32,22 @@ public class AnimeController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @PostMapping("/createNewAnimeEntry")
+    public ResponseEntity<Anime> createNewAnimeEntry(@RequestBody Anime anime) {
+        return animeService.createNewAnimeEntry(anime);
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Anime> updateAnime(@PathVariable long id, @RequestBody Anime anime) {
+        Anime updateAnime = animeService.updateAnimeById(id, anime);
+        return ResponseEntity.ok(updateAnime);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteAnime(@PathVariable long id) {
+        String result= animeService.deleteAnimeById(id);
+        return new ResponseEntity<>(result, HttpStatus.OK);
     }
 }
