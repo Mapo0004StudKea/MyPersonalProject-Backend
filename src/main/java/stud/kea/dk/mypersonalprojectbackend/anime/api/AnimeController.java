@@ -1,5 +1,7 @@
 package stud.kea.dk.mypersonalprojectbackend.anime.api;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -7,6 +9,8 @@ import org.springframework.web.multipart.MultipartFile;
 import stud.kea.dk.mypersonalprojectbackend.anime.model.Anime;
 import stud.kea.dk.mypersonalprojectbackend.anime.service.AnimeService;
 import stud.kea.dk.mypersonalprojectbackend.anime.service.ExcelService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -21,6 +25,12 @@ public class AnimeController {
     public AnimeController(AnimeService animeService, ExcelService excelService) {
         this.animeService = animeService;
         this.excelService = excelService;
+    }
+
+    @GetMapping("/GetAllPaginatedAnime")
+    public ResponseEntity<Page<Anime>> getAllPaginatedAnime(Pageable pageable) {
+        Page<Anime> animePage = animeService.getAllPaginatedAnime(pageable);
+        return ResponseEntity.ok(animePage);
     }
 
     @GetMapping("/GetAllAnime")

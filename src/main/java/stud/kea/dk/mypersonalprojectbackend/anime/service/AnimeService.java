@@ -1,6 +1,8 @@
 package stud.kea.dk.mypersonalprojectbackend.anime.service;
 
 import jakarta.persistence.EntityNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import stud.kea.dk.mypersonalprojectbackend.anime.model.Anime;
@@ -53,5 +55,9 @@ public class AnimeService {
     public String deleteAnimeById(long id) {
         animeRepository.deleteById(id);
         return "Anime with id "+id+" deleted";
+    }
+
+    public Page<Anime> getAllPaginatedAnime(Pageable pageable) {
+        return animeRepository.findAll(pageable);
     }
 }

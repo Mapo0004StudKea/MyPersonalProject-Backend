@@ -10,7 +10,6 @@ import stud.kea.dk.mypersonalprojectbackend.anime.model.Anime;
 import stud.kea.dk.mypersonalprojectbackend.anime.repository.AnimeRepository;
 
 import java.io.InputStream;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
